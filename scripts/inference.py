@@ -62,6 +62,7 @@ class GestureRecognizer:
 
         mp_drawing = mp.solutions.drawing_utils
         mp_hands = mp.solutions.hands
+        from mediapipe.framework.formats import landmark_pb2
 
         while cap.isOpened():
             success, image = cap.read()
@@ -79,9 +80,16 @@ class GestureRecognizer:
                 for idx, (gestures, landmarks, handedness) in enumerate(
                     zip(result.gestures, result.hand_landmarks, result.handedness)
                 ):
+                    # Convert landmarks to proper format for drawing
+                    hand_landmarks_proto = landmark_pb2.NormalizedLandmarkList()
+                    hand_landmarks_proto.landmark.extend([
+                        landmark_pb2.NormalizedLandmark(x=landmark.x, y=landmark.y, z=landmark.z)
+                        for landmark in landmarks
+                    ])
+
                     # Draw hand landmarks
                     mp_drawing.draw_landmarks(
-                        image, landmarks, mp_hands.HAND_CONNECTIONS,
+                        image, hand_landmarks_proto, mp_hands.HAND_CONNECTIONS,
                         mp_drawing.DrawingSpec(color=(0, 255, 0), thickness=2, circle_radius=2),
                         mp_drawing.DrawingSpec(color=(255, 255, 255), thickness=2)
                     )
