@@ -11,7 +11,7 @@ from pathlib import Path
 
 
 class GestureRecognizer:
-    def __init__(self, model_path='models/exported_model/gesture_recognizer.task'):
+    def __init__(self, model_path='models/model/gesture_recognizer.task'):
         base_options = python.BaseOptions(model_asset_path=model_path)
         options = vision.GestureRecognizerOptions(
             base_options=base_options,

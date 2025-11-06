@@ -7,7 +7,7 @@ import tensorflow as tf
 from pathlib import Path
 
 
-def train_model(dataset_path='data/gesture_dataset', output_dir='models/exported_model'):
+def train_model(dataset_path='data/dataset', output_dir='models/model'):
     print("Loading dataset...")
 
     # Load training data
