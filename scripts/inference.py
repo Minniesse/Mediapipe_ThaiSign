@@ -80,12 +80,11 @@ class GestureRecognizer:
                     zip(result.gestures, result.hand_landmarks, result.handedness)
                 ):
                     # Draw hand landmarks
-                    for landmark in landmarks:
-                        mp_drawing.draw_landmarks(
-                            image, landmark, mp_hands.HAND_CONNECTIONS,
-                            mp_drawing.DrawingSpec(color=(0, 255, 0), thickness=2, circle_radius=2),
-                            mp_drawing.DrawingSpec(color=(255, 255, 255), thickness=2)
-                        )
+                    mp_drawing.draw_landmarks(
+                        image, landmarks, mp_hands.HAND_CONNECTIONS,
+                        mp_drawing.DrawingSpec(color=(0, 255, 0), thickness=2, circle_radius=2),
+                        mp_drawing.DrawingSpec(color=(255, 255, 255), thickness=2)
+                    )
 
                     # Display gesture text
                     top_gesture = gestures[0]
