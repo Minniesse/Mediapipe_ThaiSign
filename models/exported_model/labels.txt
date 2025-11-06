@@ -1,0 +1,8 @@
+none
+fine
+hello_1
+hello_2
+no
+thank
+unwell
+yes
